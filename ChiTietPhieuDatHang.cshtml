@@ -1,0 +1,67 @@
+﻿
+@{
+    <style>
+        .title {
+            color: black;
+            font-size: 30px;
+            display: block;
+            font-weight: bolder;
+            padding: 10px 0 0 57px;
+            border-radius: 50px;
+        }
+
+        .BangLon {
+            margin: 36px auto 0px auto;
+            max-width: 600px;
+            padding: 0 0 20px 0;
+            /*background-color: rgb(142 140 140);*/
+            background-image: url(https://img4.thuthuatphanmem.vn/uploads/2020/07/05/anh-background-y-te_034616052.jpg);
+            display: block;
+            border-radius: 20px;
+            font-weight: 500;
+        }
+
+        .BangNho {
+            color: black;
+            font-size: 20px;
+            display: block;
+            display: flex;
+            min-width: 90px;
+            margin: 0 20px 3px 60px;
+        }
+
+        .TuKhoa {
+            min-width: 180px;
+        }
+
+        .luachon {
+            display: block;
+            justify-content: space-around;
+            text-align: center;
+        }
+    </style>
+
+    <body>
+        @{Html.BeginForm("Action", "Controller");}
+        <div class="BangLon">
+            <center><div class="title">THÔNG TIN CHI TIẾT PHIẾU ĐẶT HÀNG</div></center>
+            <div class="BangNho">
+                <div class="TuKhoa">Số phiếu:</div>
+                @Html.TextBox(("SoPhieu"), null, new { style = "width: 300px" })
+            </div>
+            <div class="BangNho">
+                <div class="TuKhoa">Mã thuốc:</div>
+                @Html.TextBox(("MaThuoc"), null, new { style = "width: 300px" })
+            </div>
+            <div class="BangNho">
+                <div class="TuKhoa">Số lượng đặt:</div>
+                @Html.TextBox(("SoLuongDat"), null, new { style = "width: 300px" })
+            </div>
+            <div class="luachon">
+                <input type="submit" value="Đồng Ý" />
+                <input type="submit" value="Hủy" />
+            </div>
+        </div>
+        @{Html.EndForm();}
+    </body>
+}

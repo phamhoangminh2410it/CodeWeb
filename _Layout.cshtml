@@ -1,0 +1,93 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="~/Content/StyleLayout.css">
+    <title>This is layout</title>
+</head>
+<body>
+    <div class="display">
+        <div class="display-menu">
+            <div class="box-menu">
+                <ul>
+                    <li class="active">
+                        <a href="#"><ion-icon name="home"></ion-icon>Trang Chủ</a>
+                    </li>
+                    <li>
+                        <a href="#"><ion-icon name="unlink"></ion-icon>Thuốc<ion-icon name="chevron-down"></ion-icon></a>
+                        <div class="box-submenu">
+                            <ul>
+                                <li>
+                                    <a href="#">Danh Sách Thuốc</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li>
+                        <a href="#"><ion-icon name="reader"></ion-icon>Phiếu Đặt<ion-icon name="chevron-down"></ion-icon></a>
+                        <div class="box-submenu">
+                            <ul>
+                                <li>
+                                    <a href="#">Danh Sách Phiếu Đặt</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li>
+                        <a href="#"><ion-icon name="receipt"></ion-icon>Chi Tiết Phiếu<ion-icon name="chevron-down"></ion-icon></a>
+                        <div class="box-submenu">
+                            <ul>
+                                <li>
+                                    <a href="#">Danh Sách Chi Tiết Phiếu</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li>
+                        <a href="#"><ion-icon name="storefront"></ion-icon>Phân Xưởng<ion-icon name="chevron-down"></ion-icon></a>
+                        <div class="box-submenu">
+                            <ul>
+                                <li>
+                                    <a href="#">Danh Sách Phân Xưởng</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li>
+                        <a href="#"><ion-icon name="person"></ion-icon>Phân Công<ion-icon name="chevron-down"></ion-icon></a>
+                        <div class="box-submenu">
+                            <ul>
+                                <li>
+                                    @*<a href="#">Danh Sách Phân Công</a>*@
+                                    @Html.ActionLink("Danh Sách Phân Công", "../DsPhanCong/Index")
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li>
+                        <a href="#"><ion-icon name="people"></ion-icon>Khách Hàng<ion-icon name="chevron-down"></ion-icon></a>
+                        <div class="box-submenu">
+                            <ul>
+                                <li>
+                                    <a href="#">Danh Sách Khách Hàng</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li>
+                        <a href="#"><ion-icon name="logo-apple-ar"></ion-icon>Đăng nhập</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    @RenderBody()
+    <footer>
+        <hr>
+        <p>Mọi việc chi tiết liên hệ MINH_DEV</p>
+    </footer>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+</body>
+</html>
