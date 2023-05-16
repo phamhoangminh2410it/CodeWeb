@@ -1,0 +1,49 @@
+﻿@model QuanLySanXuatDuoc.Models.tPhieuDatHang
+
+@{
+    <title>Xóa</title>
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Xóa Thông Tin Phiếu Đặt Hàng</h2>
+
+<h3>Bạn Có Chắc Chắn Muốn Xóa?</h3>
+<div>   
+    <dl @*class="dl-horizontal"*@>
+        <dt>
+            @Html.DisplayNameFor(model => model.SoPhieu)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SoPhieu)
+            <input type="hidden" value="@Html.DisplayFor(model => model.SoPhieu)" name="SoPhieu" />
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NgayLapPhieu)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NgayLapPhieu)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MaKH)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MaKH)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+<div class="form-actions no-color">
+    <input type="submit" value="Delete" class="btn btn-default" /> |
+    <button type="button" onclick="location.href='@Url.Action("Index", "DSPhieuDatHang")'" class="btn btn-default">Trở Về</button>
+</div>
+    }
+</div>

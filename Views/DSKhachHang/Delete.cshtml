@@ -1,0 +1,58 @@
+﻿@model QuanLySanXuatDuoc.Models.tKhachHang
+
+@{
+    <title>Xóa</title>
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Xóa Thông Tin Khách Hàng</h2>
+
+<h3>Bạn Có Chắc Chắn Muốn Xóa?</h3>
+<div>
+    <dl @*class="dl-horizontal"*@>
+        <dt>
+            @Html.DisplayNameFor(model => model.MaKH)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MaKH)
+            @*@Html.EditorFor(model => model.MaKH, new { htmlAttributes = new { @class = "form-control", @readonly="readonly" } })*@
+            <input type="hidden" value="@Html.DisplayFor(model => model.MaKH)" name="MaKH"/>
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TenKH)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TenKH)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DiaChi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DiaChi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SoDienThoai)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SoDienThoai)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+<div class="form-actions no-color">
+    <input type="submit" value="Xóa" class="btn btn-default" /> |
+    <button type="button" onclick="location.href='@Url.Action("Index", "DSKhachHang")'"class="btn btn-default">Trở Về</button>
+</div>
+    }
+</div>

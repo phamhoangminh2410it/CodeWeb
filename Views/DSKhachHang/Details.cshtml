@@ -1,0 +1,49 @@
+﻿@model QuanLySanXuatDuoc.Models.tKhachHang
+
+@{
+    <title>Chi Tiết</title>
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Thông Tin Chi Tiết Khách Hàng</h2>
+
+<div>
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.MaKH)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MaKH)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TenKH)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TenKH)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DiaChi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DiaChi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SoDienThoai)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SoDienThoai)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    <button type="button" onclick="location.href='@Url.Action("Edit", "DSKhachHang")'" class="btn btn-default">Sửa</button>
+    <button type="button" onclick="location.href='@Url.Action("Index", "DSKhachHang")'" class="btn btn-default">Trở Về</button>
+</p>

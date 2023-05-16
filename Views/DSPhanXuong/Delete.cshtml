@@ -1,0 +1,65 @@
+﻿@model QuanLySanXuatDuoc.Models.tPhanXuong
+
+@{
+    <title>Xóa</title>
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Xóa Thông Tin Phân Xưởng</h2>
+
+<h3>Bạn Có Chắc Chắn Muốn Xóa?</h3>
+<div>
+    <dl @*class="dl-horizontal"*@>
+        <dt>
+            @Html.DisplayNameFor(model => model.MaPhanXuong)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MaPhanXuong)
+            <input type="hidden" value="@Html.DisplayFor(model => model.MaPhanXuong)" name="MaPhanXuong" />
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TenPhanXuong)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TenPhanXuong)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DiaChi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DiaChi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DienThoai)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DienThoai)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.HoTenQuanDoc)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HoTenQuanDoc)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            <button type="button" onclick="location.href='@Url.Action("Index", "DSPhanXuong")'" class="btn btn-default">Trở Về</button>
+        </div>
+    }
+</div>

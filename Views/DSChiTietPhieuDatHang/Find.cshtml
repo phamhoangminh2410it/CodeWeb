@@ -1,0 +1,13 @@
+﻿
+@{
+    <title>Tìm Kiếm</title>
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Tìm Kiếm</h2>
+<form method="post">
+    SoPhieu: <input type="text" name=" SoPhieu" /><br />
+    MaThuoc: <input type="text" name=" MaThuoc" /><br />
+    <input type="submit" value="Tìm Kiếm" class="btn btn-default" />
+    <button type="button" onclick="location.href='@Url.Action("Index", "DSChiTietPhieuDatHang")'" class="btn btn-default">Trở Về</button>
+</form>

@@ -1,0 +1,67 @@
+﻿@model IEnumerable<QuanLySanXuatDuoc.Models.tPhanXuong>
+
+@{
+    <title>Danh Sách Phân Xưởng</title>
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container" style="margin: 0">
+    <div class="row">
+        <div class="col-md-12">
+            <h2>Danh Sách Phân Xưởng</h2>
+            <table class="table">
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.MaPhanXuong)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.TenPhanXuong)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.DiaChi)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.DienThoai)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.HoTenQuanDoc)
+                    </th>
+                    <th>
+                        Cài Đặt (
+                        @Html.ActionLink("Thêm Mới", "../DSPhanXuong/Create") |
+                        @Html.ActionLink("Tìm Kiếm", "../DSPhanXuong/Find")
+                        )
+                    </th>
+                    <th></th>
+                </tr>
+
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.MaPhanXuong)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.TenPhanXuong)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.DiaChi)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.DienThoai)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.HoTenQuanDoc)
+                        </td>
+                        <td>
+                            @Html.ActionLink("Sửa", "Edit", new { id = item.MaPhanXuong }) |
+                            @Html.ActionLink("Chi Tiết", "Details", new { id = item.MaPhanXuong }) |
+                            @Html.ActionLink("Xóa", "Delete", new { id = item.MaPhanXuong })
+                        </td>
+                    </tr>
+                }
+
+            </table>
+        </div>
+    </div>
+</div>

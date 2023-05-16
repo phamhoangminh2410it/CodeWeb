@@ -1,0 +1,57 @@
+﻿@model QuanLySanXuatDuoc.Models.tPhanXuong
+
+@{
+    <title>Chi Tiết</title>
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Thông Tin Chi Tiết Phân Xưởng</h2>
+
+<div>
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.MaPhanXuong)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MaPhanXuong)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TenPhanXuong)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TenPhanXuong)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DiaChi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DiaChi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DienThoai)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DienThoai)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.HoTenQuanDoc)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HoTenQuanDoc)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    <button type="button" onclick="location.href='@Url.Action("Edit", "DSPhanXuong")'" class="btn btn-default">Sửa</button>
+    <button type="button" onclick="location.href='@Url.Action("Index", "DSPhanXuong")'" class="btn btn-default">Trở Về</button>
+</p>

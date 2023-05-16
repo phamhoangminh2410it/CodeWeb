@@ -1,0 +1,55 @@
+﻿@model IEnumerable<QuanLySanXuatDuoc.Models.tChiTietPhieuDatHang>
+
+@{
+    <title>Danh Sách Chi Tiết Phiếu Đặt Hàng</title>
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container" style="margin: 0">
+    <div class="row">
+        <div class="col-md-12">
+            <h2>Danh Sách Chi Tiết Phiếu Đặt Hàng</h2>
+            <table class="table">
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.SoPhieu)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.MaThuoc)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.SoLuongDat)
+                    </th>
+                    <th>
+                        Cài Đặt (
+                        @Html.ActionLink("Thêm Mới", "../DSChiTietPhieuDatHang/Create") |
+                        @Html.ActionLink("Tìm Kiếm", "../DSChiTietPhieuDatHang/Find")
+                        )
+                    </th>
+                    <th></th>
+                </tr>
+
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.SoPhieu)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.MaThuoc)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.SoLuongDat)
+                        </td>
+                        <td>
+                            @Html.ActionLink("Sửa", "Edit", new { id = item.SoPhieu, id2 = item.MaThuoc }) |
+                            @Html.ActionLink("Chi Tiết", "Details", new { id = item.SoPhieu, id2 = item.MaThuoc }) |
+                            @Html.ActionLink("Xóa", "Delete", new { id = item.SoPhieu, id2 = item.MaThuoc })
+                        </td>
+                    </tr>
+                }
+
+            </table>
+        </div>
+    </div>
+</div>

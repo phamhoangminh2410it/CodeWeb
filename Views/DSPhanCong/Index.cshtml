@@ -1,0 +1,67 @@
+﻿@model IEnumerable<QuanLySanXuatDuoc.Models.tPhanCong>
+
+@{
+    <title>Danh Sách Phân Công</title>
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container" style="margin: 0">
+    <div class="row">
+        <div class="col-md-12">
+            <h2>Danh Sách Phân Công</h2>
+            <table class="table">
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.SoPhanCong)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.MaPhanXuong)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.SoPhieu)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.MaThuoc)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.SoLuong)
+                    </th>
+                    <th>
+                        Cài Đặt (
+                        @Html.ActionLink("Thêm Mới", "../DSPhanCong/Create") |
+                        @Html.ActionLink("Tìm Kiếm", "../DSPhanCong/Find")
+                        )
+                    </th>
+                    <th></th>
+                </tr>
+
+                @foreach (var item in Model)
+                {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SoPhanCong)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.MaPhanXuong)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SoPhieu)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.MaThuoc)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SoLuong)
+                </td>
+                <td>
+                    @Html.ActionLink("Sửa", "Edit", new { id = item.SoPhanCong }) |
+                    @Html.ActionLink("Chi Tiết", "Details", new { id = item.SoPhanCong }) |
+                    @Html.ActionLink("Xóa", "Delete", new { id = item.SoPhanCong })
+                </td>
+            </tr>
+                }
+
+            </table>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,55 @@
+﻿@model IEnumerable<QuanLySanXuatDuoc.Models.tThuoc>
+
+@{
+    <title>Danh Sách Thuốc</title>
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container" style="margin: 0">
+    <div class="row">
+        <div class="col-md-12">
+            <h2>Danh Sách Thuốc</h2>
+            <table class="table">
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.MaThuoc)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.TenThuoc)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.QuyCach)
+                    </th>
+                    <th>
+                        Cài Đặt (
+                        @Html.ActionLink("Thêm Mới", "../DSThuoc/Create") |
+                        @Html.ActionLink("Tìm Kiếm", "../DSThuoc/Find")
+                        )
+                    </th>
+                    <th></th>
+                </tr>
+
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.MaThuoc)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.TenThuoc)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.QuyCach)
+                        </td>
+                        <td>
+                            @Html.ActionLink("Sửa", "Edit", new { id = item.MaThuoc }) |
+                            @Html.ActionLink("Chi Tiết", "Details", new { id = item.MaThuoc }) |
+                            @Html.ActionLink("Xóa", "Delete", new { id = item.MaThuoc })
+                        </td>
+                    </tr>
+                }
+
+            </table>
+        </div>
+    </div>
+</div>
