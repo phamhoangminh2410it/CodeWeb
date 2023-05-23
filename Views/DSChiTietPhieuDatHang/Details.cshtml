@@ -3,12 +3,13 @@
 @{
     <title>Chi Tiết</title>
     Layout = "~/Views/Shared/_Layout.cshtml";
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
 }
 
-<h2>Thông Tin Chi Tiết Phiếu Đặt Hàng</h2>
+<h2 style="text-align: center">Thông Tin Chi Tiết Phiếu Đặt Hàng</h2>
 
 <div>
-    <dl class="dl-horizontal">
+    <dl class="dl-horizontal" style="margin: 0px 0px 0px 800px">
         <dt>
             @Html.DisplayNameFor(model => model.SoPhieu)
         </dt>
@@ -35,7 +36,7 @@
 
     </dl>
 </div>
-<p>
+<div class="form-actions no-color" style="margin: 0px 0px 0px 900px">
     <button type="button" onclick="location.href='@Url.Action("Edit", "DSChiTietPhieuDatHang")'" class="btn btn-default">Sửa</button>
     <button type="button" onclick="location.href='@Url.Action("Index", "DSChiTietPhieuDatHang")'" class="btn btn-default">Trở Về</button>
-</p>
+</div>

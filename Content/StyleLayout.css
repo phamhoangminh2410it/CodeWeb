@@ -33,30 +33,30 @@ body {
     text-align: center;
 }
 
-.box-menu ul {
-    display: inline-flex;
-    list-style: none;
-    color: #fff;
-}    
+    .box-menu ul {
+        display: inline-flex;
+        list-style: none;
+        color: #fff;
+    }
 
-.box-menu ul li {
-    width: 145px;
-    margin: 8px;
-    padding: 0px;
-}
+        .box-menu ul li {
+            width: 145px;
+            margin: 8px;
+            padding: 0px;
+        }
 
-.box-menu ul li a {
-    color: blue;
-    text-decoration: none;
-}
+            .box-menu ul li a {
+                color: blue;
+                text-decoration: none;
+            }
 
-.active, .box-menu ul li:hover {
-    border-radius: 3px;
-}
+            .active, .box-menu ul li:hover {
+                border-radius: 3px;
+            }
 
-.box-menu ion-icon {
-    margin-right: 5px;
-}
+    .box-menu ion-icon {
+        margin-right: 5px;
+    }
 
 .box-submenu {
     background: skyblue;
@@ -70,18 +70,18 @@ body {
     margin-left: -20px;
 }
 
-.box-menu ul li:hover .box-submenu ul {
-    display: block;
-    margin: 0px;
-    padding: 0px;
-}
+    .box-menu ul li:hover .box-submenu ul {
+        display: block;
+        margin: 0px;
+        padding: 0px;
+    }
 
-.box-menu ul li:hover .box-submenu ul li {
-    width: 200px;
-    text-align: left;
-    border-bottom: dotted 1px #fff;
-    background: transparent;
-    border-radius: 0;
-    padding: 5px;
-    margin: 15px;
-}
+        .box-menu ul li:hover .box-submenu ul li {
+            width: 200px;
+            text-align: left;
+            border-bottom: dotted 1px #fff;
+            background: transparent;
+            border-radius: 0;
+            padding: 5px;
+            margin: 15px;
+        }

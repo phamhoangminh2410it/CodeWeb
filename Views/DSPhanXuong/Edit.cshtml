@@ -3,15 +3,16 @@
 @{
     <title>Sửa</title>
     Layout = "~/Views/Shared/_Layout.cshtml";
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
 }
 
-<h2>Sửa Thông Tin Phân Xưởng</h2>
+<h2 style="text-align: center">Sửa Thông Tin Phân Xưởng</h2>
 
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
 
-    <div class="form-horizontal">
+    <div class="form-horizontal" style="margin: 0px 430px 0px 430px">
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">
             @Html.LabelFor(model => model.MaPhanXuong, htmlAttributes: new { @class = "control-label col-md-2" })

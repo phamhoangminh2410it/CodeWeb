@@ -1,24 +1,27 @@
-﻿@model IEnumerable<QuanLySanXuatDuoc.Models.tThuoc>
+﻿@model PagedList.IPagedList<QuanLySanXuatDuoc.Models.tThuoc>
 
+@using PagedList.Mvc;
 @{
     <title>Danh Sách Thuốc</title>
     Layout = "~/Views/Shared/_Layout.cshtml";
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/PagedList.css" rel="stylesheet" />
 }
 
-<div class="container" style="margin: 0">
+<div class="container" style="margin: 0px 0px 0px 430px">
     <div class="row">
         <div class="col-md-12">
-            <h2>Danh Sách Thuốc</h2>
+            <h2 style="text-align: center">Danh Sách Thuốc</h2>
             <table class="table">
                 <tr>
                     <th>
-                        @Html.DisplayNameFor(model => model.MaThuoc)
+                        Mã Thuốc
                     </th>
                     <th>
-                        @Html.DisplayNameFor(model => model.TenThuoc)
+                        Tên Thuốc
                     </th>
                     <th>
-                        @Html.DisplayNameFor(model => model.QuyCach)
+                        Quy Cách
                     </th>
                     <th>
                         Cài Đặt (
@@ -50,6 +53,7 @@
                 }
 
             </table>
+            @Html.PagedListPager(Model, page => Url.Action("Index", new { page }))
         </div>
     </div>
 </div>

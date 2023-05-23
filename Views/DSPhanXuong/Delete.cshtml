@@ -3,13 +3,14 @@
 @{
     <title>Xóa</title>
     Layout = "~/Views/Shared/_Layout.cshtml";
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
 }
 
-<h2>Xóa Thông Tin Phân Xưởng</h2>
+<h2 style="text-align: center">Xóa Thông Tin Phân Xưởng</h2>
 
-<h3>Bạn Có Chắc Chắn Muốn Xóa?</h3>
+<h3 style="text-align: center">Bạn Có Chắc Chắn Muốn Xóa?</h3>
 <div>
-    <dl @*class="dl-horizontal"*@>
+    <dl style="margin: 0px 0px 0px 800px">
         <dt>
             @Html.DisplayNameFor(model => model.MaPhanXuong)
         </dt>
@@ -57,8 +58,8 @@
     {
         @Html.AntiForgeryToken()
 
-        <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-default" /> |
+        <div class="form-actions no-color" style="margin: 0px 0px 0px 900px">
+            <input type="submit" value="Xóa" class="btn btn-default" /> |
             <button type="button" onclick="location.href='@Url.Action("Index", "DSPhanXuong")'" class="btn btn-default">Trở Về</button>
         </div>
     }

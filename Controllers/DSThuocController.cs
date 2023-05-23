@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using QuanLySanXuatDuoc.Models;
+using PagedList;
 
 namespace QuanlySanXuatDuoc.Controllers
 {
@@ -15,36 +16,38 @@ namespace QuanlySanXuatDuoc.Controllers
         {
             return View();
         }
-        public ActionResult Index()
+        public ActionResult Index(int? page)
         {
-            var ds = from thuoc in db.tThuocs select thuoc;
-            return View(ds);
-        }
-
-        public ActionResult Edit(string id)
-        {
-            tThuoc thuoc = db.tThuocs.Find(id);
-            return View(thuoc);
+            if (page == null)
+                page = 1;
+            var ds = (from thuoc in db.tThuocs select thuoc).OrderBy(x => x.MaThuoc);
+            int pageSize = 3;
+            int pageNumber = (page ?? 1);
+            return View(ds.ToPagedList(pageNumber, pageSize));
         }
         [HttpGet]
         public ActionResult Delete(string id)
         {
-            tThuoc thuoc = db.tThuocs.Find(id);
+            QuanLySanXuatXiNghiepDuocEntities db = new QuanLySanXuatXiNghiepDuocEntities();
+            tThuoc thuoc = db.tThuocs.Single(x => x.MaThuoc == id);
+
             return View(thuoc);
         }
         [HttpPost]
-        public ActionResult Delete(FormCollection f)
+        [ActionName("Delete")]
+        public ActionResult DeleteConfirmed(string id)
         {
-            string id = f.Get("MaThuoc");
-            var thuoc1 = (from ds in db.tPhanCongs where ds.MaThuoc == id select ds).FirstOrDefault();
-            var thuoc2 = (from ds in db.tChiTietPhieuDatHangs where ds.MaThuoc == id select ds).FirstOrDefault();
-            if ((thuoc1 == null) && (thuoc2 == null))
-            {
-                tThuoc thuoc = db.tThuocs.Find(id);
-                db.tThuocs.Remove(thuoc);
-                db.SaveChanges();
-            }
+            QuanLySanXuatXiNghiepDuocEntities db = new QuanLySanXuatXiNghiepDuocEntities();
+            tThuoc thuoc = db.tThuocs.Single(x => x.MaThuoc == id);
+            db.tThuocs.Remove(thuoc);
+            db.SaveChanges();
             return RedirectToAction("Index");
+        }
+        [HttpGet]
+        public ActionResult Edit(string id)
+        {
+            tThuoc thuoc = db.tThuocs.Find(id);
+            return View(thuoc);
         }
         [HttpPost]
         public ActionResult Edit(FormCollection f)

@@ -1,0 +1,43 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Login</title>
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="~/Content/StyleLayout.css">
+</head>
+<body>
+    <div style="margin: 200px 0px 0px 0px">
+        <h3 style="text-align: center">Đăng Nhập Hệ Thống</h3>
+    </div>
+    @ViewBag.error
+    <div class="container" style="margin: 0px 0px 0px 800px"
+    <form method="post" action="@Url.Action("Login", "Login")">
+        <!-- Action, Controller -->
+        <table border="0" cellpadding="2" cellspacing="2">
+            <tr>
+                <td>Username</td>
+                <td><input type="text" name="username"></td>
+            </tr>
+            <tr>
+                <td>Password</td>
+                <td><input type="password" name="password"></td>
+            </tr>
+            <tr>
+                <td>&nbsp;</td>
+                @*<td><input type="submit" value="Login"></td>*@
+            </tr>
+        </table>
+    </form>
+    <div class="form-actions no-color" style="margin: 0px 0px 0px 80px">
+            <button type="button" onclick="location.href='@Url.Action("Index", "Home")'" class="btn btn-default">Đăng Nhập</button>
+    </div>
+</div>
+    </div>
+</body>
+</html>

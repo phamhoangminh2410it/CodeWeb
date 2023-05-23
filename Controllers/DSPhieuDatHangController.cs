@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using QuanLySanXuatDuoc.Models;
+using PagedList;
 
 namespace QuanlySanXuatDuoc.Controllers
 {
@@ -15,16 +16,14 @@ namespace QuanlySanXuatDuoc.Controllers
         {
             return View();
         }
-        public ActionResult Index()
+        public ActionResult Index(int? page)
         {
-            var ds = from phieu in db.tPhieuDatHangs select phieu;
-            return View(ds);
-        }
-
-        public ActionResult Edit(string id)
-        {
-            tPhieuDatHang phieu = db.tPhieuDatHangs.Find(id);
-            return View(phieu);
+            if (page == null)
+                page = 1;
+            var ds = (from phieu in db.tPhieuDatHangs select phieu).OrderBy(x => x.SoPhieu);
+            int pageSize = 3;
+            int pageNumber = (page ?? 1);
+            return View(ds.ToPagedList(pageNumber, pageSize));
         }
         [HttpGet]
         public ActionResult Delete(string id)
@@ -46,12 +45,18 @@ namespace QuanlySanXuatDuoc.Controllers
             }
             return RedirectToAction("Index");
         }
+        [HttpGet]
+        public ActionResult Edit(string id)
+        {
+            tPhieuDatHang phieu = db.tPhieuDatHangs.Find(id);
+            return View(phieu);
+        }
         [HttpPost]
         public ActionResult Edit(FormCollection f)
         {
             string ma = f.Get("SoPhieu");
             tPhieuDatHang phieu = db.tPhieuDatHangs.Find(ma);
-            phieu.NgayLapPhieu = f.Get("NgayLapPhieu");
+            phieu.NgayLapPhieu = Convert.ToDateTime(f.Get("NgayLapPhieu"));
             phieu.MaKH = f.Get("MaKH");
             db.SaveChanges();
             return RedirectToAction("Index");

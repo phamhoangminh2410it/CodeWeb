@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using QuanLySanXuatDuoc.Models;
+using PagedList;
 
 namespace QuanlySanXuatDuoc.Controllers
 {
@@ -15,35 +16,38 @@ namespace QuanlySanXuatDuoc.Controllers
         {
             return View();
         }
-        public ActionResult Index()
+        public ActionResult Index(int? page)
         {
-            var ds = from phanxuong in db.tPhanXuongs select phanxuong;
-            return View(ds);
-        }
-
-        public ActionResult Edit(string id)
-        {
-            tPhanXuong phanxuong = db.tPhanXuongs.Find(id);
-            return View(phanxuong);
+            if (page == null)
+                page = 1;
+            var ds = (from px in db.tPhanXuongs select px).OrderBy(x => x.MaPhanXuong);
+            int pageSize = 3;
+            int pageNumber = (page ?? 1);
+            return View(ds.ToPagedList(pageNumber, pageSize));
         }
         [HttpGet]
         public ActionResult Delete(string id)
         {
-            tPhanXuong phanxuong = db.tPhanXuongs.Find(id);
+            QuanLySanXuatXiNghiepDuocEntities db = new QuanLySanXuatXiNghiepDuocEntities();
+            tPhanXuong phanxuong = db.tPhanXuongs.Single(x => x.MaPhanXuong == id);
+
             return View(phanxuong);
         }
         [HttpPost]
-        public ActionResult Delete(FormCollection f)
+        [ActionName("Delete")]
+        public ActionResult DeleteConfirmed(string id)
         {
-            string id = f.Get("MaPhanXuong");
-            var px = (from ds in db.tPhanCongs where ds.MaPhanXuong == id select ds).FirstOrDefault();
-            if (px == null)
-            {
-                tPhanXuong phanxuong = db.tPhanXuongs.Find(id);
-                db.tPhanXuongs.Remove(phanxuong);
-                db.SaveChanges();
-            }
+            QuanLySanXuatXiNghiepDuocEntities db = new QuanLySanXuatXiNghiepDuocEntities();
+            tPhanXuong phanxuong = db.tPhanXuongs.Single(x => x.MaPhanXuong == id);
+            db.tPhanXuongs.Remove(phanxuong);
+            db.SaveChanges();
             return RedirectToAction("Index");
+        }
+        [HttpGet]
+        public ActionResult Edit(string id)
+        {
+            tPhanXuong phanxuong = db.tPhanXuongs.Find(id);
+            return View(phanxuong);
         }
         [HttpPost]
         public ActionResult Edit(FormCollection f)

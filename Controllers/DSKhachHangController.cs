@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using QuanLySanXuatDuoc.Models;
+using PagedList;
 
 namespace QuanlySanXuatDuoc.Controllers
 {
@@ -15,26 +16,26 @@ namespace QuanlySanXuatDuoc.Controllers
         {
             return View();
         }
-        public ActionResult Index()
+        public ActionResult Index(int? page)
         {
-            var ds = from khachhang in db.tKhachHangs select khachhang;
-            return View(ds);
+            if (page == null)
+                page = 1;
+            var ds = (from kh in db.tKhachHangs select kh).OrderBy(x => x.MaKH);
+            int pageSize = 3;
+            int pageNumber = (page ?? 1);
+            return View(ds.ToPagedList(pageNumber, pageSize));
         }
-        
-        public ActionResult Edit(string id)
-        {
-            tKhachHang khachhang = db.tKhachHangs.Find(id);
-            return View(khachhang);
-        }
-        [HttpGet]
+        /*[HttpGet]
         public ActionResult Delete(string id)
         {
+            QuanLySanXuatXiNghiepDuocEntities db = new QuanLySanXuatXiNghiepDuocEntities();
             tKhachHang khachhang = db.tKhachHangs.Find(id);
             return View(khachhang);
         }
         [HttpPost]
         public ActionResult Delete(FormCollection f)
         {
+            QuanLySanXuatXiNghiepDuocEntities db = new QuanLySanXuatXiNghiepDuocEntities();
             string id = f.Get("MaKH");
             var khach = (from ds in db.tPhieuDatHangs where ds.MaKH == id select ds).FirstOrDefault();
             if (khach == null)
@@ -44,6 +45,31 @@ namespace QuanlySanXuatDuoc.Controllers
                 db.SaveChanges();
             }
             return RedirectToAction("Index");
+        }*/
+        [HttpGet]
+
+        public ActionResult Delete(string id)
+        {
+            QuanLySanXuatXiNghiepDuocEntities db = new QuanLySanXuatXiNghiepDuocEntities();
+            tKhachHang khachhang = db.tKhachHangs.Single(x => x.MaKH == id);
+
+            return View(khachhang);
+        }
+        [HttpPost]
+        [ActionName("Delete")]
+        public ActionResult DeleteConfirmed(string id)
+        {
+            QuanLySanXuatXiNghiepDuocEntities db = new QuanLySanXuatXiNghiepDuocEntities();
+            tKhachHang khachhang = db.tKhachHangs.Single(x => x.MaKH == id);
+            db.tKhachHangs.Remove(khachhang);
+            db.SaveChanges();
+            return RedirectToAction("Index");
+        }
+        [HttpGet]
+        public ActionResult Edit(string id)
+        {
+            tKhachHang khachhang = db.tKhachHangs.Find(id);
+            return View(khachhang);
         }
         [HttpPost]
         public ActionResult Edit(FormCollection f)

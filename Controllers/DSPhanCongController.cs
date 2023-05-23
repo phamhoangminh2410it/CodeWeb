@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using QuanLySanXuatDuoc.Models;
+using PagedList;
 
 namespace QuanLySanXuatDuoc.Controllers
 {
@@ -15,10 +16,14 @@ namespace QuanLySanXuatDuoc.Controllers
         {
             return View();
         }
-        public ActionResult Index()
+        public ActionResult Index(int? page)
         {
-            var ds = from phancong in db.tPhanCongs select phancong;
-            return View(ds);
+            if (page == null)
+                page = 1;
+            var ds = (from pc in db.tPhanCongs select pc).OrderBy(x => x.SoPhanCong);
+            int pageSize = 3;
+            int pageNumber = (page ?? 1);
+            return View(ds.ToPagedList(pageNumber, pageSize));
         }
 
         [HttpGet]
@@ -54,7 +59,7 @@ namespace QuanLySanXuatDuoc.Controllers
             return RedirectToAction("Index");
         }
         [HttpGet]
-        public ActionResult Find()
+        public ActionResult Find(string id)
         {
             return View();
         }
@@ -68,27 +73,25 @@ namespace QuanLySanXuatDuoc.Controllers
         public ActionResult Details(string id)
         {
             QuanLySanXuatXiNghiepDuocEntities db = new QuanLySanXuatXiNghiepDuocEntities();
-            tPhanCong mimi = db.tPhanCongs.Find(id);
-            return View(mimi);
+            tPhanCong chitiet = db.tPhanCongs.Find(id);
+            return View(chitiet);
         }
         [HttpGet]
         public ActionResult Delete(string id)
         {
+            QuanLySanXuatXiNghiepDuocEntities db = new QuanLySanXuatXiNghiepDuocEntities();
             tPhanCong phancong = db.tPhanCongs.Find(id);
             return View(phancong);
         }
         [HttpPost]
-        public ActionResult Delete(FormCollection f)
+        [ActionName("Delete")]
+        public ActionResult DeleteConfirmed(string id)
         {
-            string sophancong = f.Get("SoPhanCong");
-            var cthd = (from t in db.tPhanCongs where t.SoPhanCong == sophancong select t).FirstOrDefault();
-            {
-                tPhanCong phancong = db.tPhanCongs.Find(sophancong);
-                db.tPhanCongs.Remove(phancong);
-                db.SaveChanges();
-            }
+            QuanLySanXuatXiNghiepDuocEntities db = new QuanLySanXuatXiNghiepDuocEntities();
+            tPhanCong phancong = db.tPhanCongs.Find(id);
+            db.tPhanCongs.Remove(phancong);
+            db.SaveChanges();
             return RedirectToAction("Index");
         }
-
     }
 }

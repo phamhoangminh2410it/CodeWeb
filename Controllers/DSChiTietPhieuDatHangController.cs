@@ -5,6 +5,7 @@ using System.Security.Cryptography.X509Certificates;
 using System.Web;
 using System.Web.Mvc;
 using QuanLySanXuatDuoc.Models;
+using PagedList;
 
 namespace QuanLySanXuatDuoc.Controllers
 {
@@ -16,10 +17,14 @@ namespace QuanLySanXuatDuoc.Controllers
         {
             return View();
         }
-        public ActionResult Index()
+        public ActionResult Index(int? page)
         {
-            var ds = from chitiet in db.tChiTietPhieuDatHangs select chitiet;
-            return View(ds);
+            if (page == null)
+                page = 1;
+            var ds = (from ctpdh in db.tChiTietPhieuDatHangs select ctpdh).OrderBy(x => x.SoPhieu);
+            int pageSize = 3;
+            int pageNumber = (page ?? 1);
+            return View(ds.ToPagedList(pageNumber, pageSize));
         }
         [HttpGet]
         public ActionResult Edit(string id, string id2)
@@ -54,8 +59,8 @@ namespace QuanLySanXuatDuoc.Controllers
         public ActionResult Details(string id, string id2)
         {
             QuanLySanXuatXiNghiepDuocEntities db = new QuanLySanXuatXiNghiepDuocEntities();
-            tChiTietPhieuDatHang mimi = db.tChiTietPhieuDatHangs.Find(id, id2);
-            return View(mimi);
+            tChiTietPhieuDatHang ct = db.tChiTietPhieuDatHangs.Find(id, id2);
+            return View(ct);
         }
         [HttpGet]
         public ActionResult Find()
@@ -71,7 +76,6 @@ namespace QuanLySanXuatDuoc.Controllers
 
         }
         [HttpGet]
-
         public ActionResult Delete(string id, string id2)
         {
             QuanLySanXuatXiNghiepDuocEntities db = new QuanLySanXuatXiNghiepDuocEntities();

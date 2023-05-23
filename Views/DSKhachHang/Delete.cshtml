@@ -3,13 +3,14 @@
 @{
     <title>Xóa</title>
     Layout = "~/Views/Shared/_Layout.cshtml";
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
 }
 
-<h2>Xóa Thông Tin Khách Hàng</h2>
+<h2 style="text-align: center">Xóa Thông Tin Khách Hàng</h2>
 
-<h3>Bạn Có Chắc Chắn Muốn Xóa?</h3>
+<h3 style="text-align: center">Bạn Có Chắc Chắn Muốn Xóa?</h3>
 <div>
-    <dl @*class="dl-horizontal"*@>
+    <dl class="dl-horizontal" style="margin: 0px 0px 0px 800px">
         <dt>
             @Html.DisplayNameFor(model => model.MaKH)
         </dt>
@@ -17,7 +18,7 @@
         <dd>
             @Html.DisplayFor(model => model.MaKH)
             @*@Html.EditorFor(model => model.MaKH, new { htmlAttributes = new { @class = "form-control", @readonly="readonly" } })*@
-            <input type="hidden" value="@Html.DisplayFor(model => model.MaKH)" name="MaKH"/>
+            <input type="hidden" value="@Html.DisplayFor(model => model.MaKH)" name="MaKH" />
         </dd>
 
         <dt>
@@ -50,9 +51,9 @@
     {
         @Html.AntiForgeryToken()
 
-<div class="form-actions no-color">
-    <input type="submit" value="Xóa" class="btn btn-default" /> |
-    <button type="button" onclick="location.href='@Url.Action("Index", "DSKhachHang")'"class="btn btn-default">Trở Về</button>
-</div>
+        <div class="form-actions no-color" style="margin: 0px 0px 0px 900px">
+            <input type="submit" value="Xóa" class="btn btn-default" /> |
+            <button type="button" onclick="location.href='@Url.Action("Index", "DSKhachHang")'" class="btn btn-default">Trở Về</button>
+        </div>
     }
 </div>

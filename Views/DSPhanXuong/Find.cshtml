@@ -2,11 +2,14 @@
 @{
     <title>Tìm Kiếm</title>
     Layout = "~/Views/Shared/_Layout.cshtml";
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
 }
 
-<h2>Tìm Kiếm</h2>
-<form method="post">
-    MaPhanXuong: <input type="text" name=" MaPhanXuong" /><br />
-    <input type="submit" value="Tìm Kiếm" class="btn btn-default" />
-    <button type="button" onclick="location.href='@Url.Action("Index", "DSPhanXuong")'" class="btn btn-default">Trở Về</button>
-</form>
+<h2 style="text-align">Tìm Kiếm</h2>
+<div class="form-actions no-color" style="margin: 0px 0px 0px 900px">
+    <form method="post">
+        MaPhanXuong: <input type="text" name=" MaPhanXuong" /><br />
+        <input type="submit" value="Tìm Kiếm" class="btn btn-default" />
+        <button type="button" onclick="location.href='@Url.Action("Index", "DSPhanXuong")'" class="btn btn-default">Trở Về</button>
+    </form>
+</div>

@@ -3,15 +3,16 @@
 @{
     <title>Tạo Mới</title>
     Layout = "~/Views/Shared/_Layout.cshtml";
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
 }
 
-<h2 style="margin-left: 120px">Tạo Mới Thông Tin Khách Hàng</h2>
+<h2 style="text-align: center">Tạo Mới Thông Tin Khách Hàng</h2>
 
-@using (Html.BeginForm()) 
+@using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
-    <div class="form-horizontal">
+
+    <div class="form-horizontal" style="margin: 0px 430px 0px 430px">
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">
             @Html.LabelFor(model => model.MaKH, htmlAttributes: new { @class = "control-label col-md-2" })
